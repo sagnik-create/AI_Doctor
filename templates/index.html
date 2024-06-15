@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Doctor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Doctor</h1>
+        <form method="POST">
+            <label for="symptoms">Enter your symptoms (separated by commas):</label>
+            <input type="text" id="symptoms" name="symptoms" required>
+            <button type="submit">Diagnose</button>
+        </form>
+        {% if diagnosis is not none %}
+            <h2>Possible Diagnosis:</h2>
+            <ul>
+                {% for disease in diagnosis %}
+                    <li>{{ disease }}</li>
+                {% else %}
+                    <li>No matching disease found.</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
